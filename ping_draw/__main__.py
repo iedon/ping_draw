@@ -170,6 +170,9 @@ def draw_mp4(
         video.set(cv2.CAP_PROP_POS_MSEC, (count * 1000)) # read every 1s
         success, frame = video.read()
 
+        if not success:
+            break
+
         pil_img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
         pil_img.thumbnail((width, height), Image.LANCZOS)
 
